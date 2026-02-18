@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const CtaStrip = () => {
+interface CtaStripProps {
+  onScheduleCall?: () => void;
+}
+
+const CtaStrip = ({ onScheduleCall }: CtaStripProps) => {
   return (
     <section id="contact" className="bg-cta section-padding">
       <div className="container-narrow text-center">
@@ -20,13 +24,13 @@ const CtaStrip = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-heading font-semibold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity text-sm tracking-wide"
+          <button
+            onClick={onScheduleCall}
+            className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-heading font-semibold px-8 py-4 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all text-sm tracking-wide"
           >
             Schedule a Call
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
