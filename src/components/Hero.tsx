@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const Hero = () => {
+interface HeroProps {
+  onScheduleCall?: () => void;
+}
+
+const Hero = ({ onScheduleCall }: HeroProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero">
       <img
@@ -50,13 +54,13 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-heading font-semibold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity text-sm tracking-wide"
+          <button
+            onClick={onScheduleCall}
+            className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-heading font-semibold px-8 py-4 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all text-sm tracking-wide"
           >
             Book a Consultation
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </button>
           <a
             href="#how-we-work"
             className="inline-flex items-center gap-2 border border-hero-muted/30 text-hero-foreground font-heading font-medium px-8 py-4 rounded-lg hover:border-hero-muted/60 transition-colors text-sm tracking-wide"
