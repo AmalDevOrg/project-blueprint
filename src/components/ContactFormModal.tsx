@@ -6,7 +6,13 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  phone: z.string().trim().regex(/^[0-9]*$/, "Phone must contain only numbers").max(20).optional().or(z.literal("")),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[0-9]*$/, "Phone must contain only numbers")
+    .max(20)
+    .optional()
+    .or(z.literal("")),
   company: z.string().trim().max(100).optional().or(z.literal("")),
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
@@ -27,7 +33,9 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
     company: "",
     message: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof ContactFormData, string>>
+  >({});
   const [status, setStatus] = useState<FormStatus>("idle");
 
   const handleChange = (field: keyof ContactFormData, value: string) => {
@@ -55,19 +63,15 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
     setStatus("submitting");
 
     try {
-      // ====================================================
-      // 🔌 INTEGRATION POINT — Replace this with your API call
-      // Example:
-      //   const res = await fetch("/api/contact", {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify(result.data),
-      //   });
-      //   if (!res.ok) throw new Error("Failed");
-      // ====================================================
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulated delay
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result.data),
+      });
+      const data = await response.json();
+      if (!data.success) throw new Error("Failed to send email");
       setStatus("success");
-    } catch {
+    } catch (error) {
       setStatus("error");
     }
   };
@@ -77,7 +81,13 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
       onClose();
       // Reset after animation
       setTimeout(() => {
-        setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
         setErrors({});
         setStatus("idle");
       }, 300);
@@ -95,7 +105,10 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
           transition={{ duration: 0.2 }}
         >
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose} />
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={handleClose}
+          />
 
           {/* Modal */}
           <motion.div
@@ -111,8 +124,12 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
             {/* Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-2">
               <div>
-                <h2 className="font-heading font-bold text-xl text-foreground">Schedule a Call</h2>
-                <p className="text-sm text-muted-foreground mt-1">Tell us about your project</p>
+                <h2 className="font-heading font-bold text-xl text-foreground">
+                  Schedule a Call
+                </h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Tell us about your project
+                </p>
               </div>
               <button
                 onClick={handleClose}
@@ -138,7 +155,8 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
                       Thanks! We'll reach out shortly.
                     </h3>
                     <p className="text-sm text-muted-foreground mt-2 max-w-xs">
-                      We've received your message and will get back to you within one business day.
+                      We've received your message and will get back to you
+                      within one business day.
                     </p>
                     <button
                       onClick={handleClose}
@@ -208,7 +226,9 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
                       </label>
                       <textarea
                         value={formData.message}
-                        onChange={(e) => handleChange("message", e.target.value)}
+                        onChange={(e) =>
+                          handleChange("message", e.target.value)
+                        }
                         rows={4}
                         placeholder="Tell us about your project or what you'd like to discuss..."
                         className={`w-full rounded-lg border px-3 py-2.5 text-sm bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-colors resize-none ${
@@ -216,7 +236,9 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
                         }`}
                       />
                       {errors.message && (
-                        <p className="text-xs text-destructive mt-1">{errors.message}</p>
+                        <p className="text-xs text-destructive mt-1">
+                          {errors.message}
+                        </p>
                       )}
                     </div>
 
@@ -261,7 +283,15 @@ interface FieldProps {
   placeholder?: string;
 }
 
-const Field = ({ label, value, onChange, error, required, type = "text", placeholder }: FieldProps) => (
+const Field = ({
+  label,
+  value,
+  onChange,
+  error,
+  required,
+  type = "text",
+  placeholder,
+}: FieldProps) => (
   <div>
     <label className="block text-sm font-medium text-foreground mb-1.5">
       {label} {required && <span className="text-destructive">*</span>}
