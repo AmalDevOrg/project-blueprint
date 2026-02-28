@@ -1,6 +1,5 @@
-// Brevo API credentials (store these as environment variables for security)
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const CONTACT_SENDER = process.env.CONTACT_SENDER;
+const CONTACT_EMAIL = process.env.VITE_CONTACT_EMAIL;
 
 interface ContactFormData {
   name: string;
@@ -19,23 +18,23 @@ export default async function handler(req, res) {
 
   const { name, email, phone, message, company } = req.body;
 
-  // 1. Basic Validation
+  // Basic Validation
   if (!name || !email || !message) {
     return res
       .status(400)
       .json({ success: false, message: "Missing required fields" });
   }
 
-  // 2. Prepare the email data per Brevo V3 specs
+  // Prepare the email data per Brevo V3 specs
   const emailData = {
     sender: {
       name: "BuildX",
-      email: CONTACT_SENDER, // This MUST be a verified sender in your Brevo dashboard
+      email: CONTACT_EMAIL, // This must be a verified sender in Brevo dashboard
     },
     to: [
       {
-        email: email,
-        name: name,
+        email: CONTACT_EMAIL, // The recipient of the contact form submissions
+        // name: name,
       },
     ],
     subject: "New Contact Form Submission",
@@ -135,8 +134,8 @@ const generateEmailTemplate = (data: {
                 <td><a href="mailto:${
                   data.email
                 }" style="color: ${accentColor}; text-decoration: none;">${
-    data.email
-  }</a></td>
+                  data.email
+                }</a></td>
               </tr>
               <tr>
                 <th>PHONE</th>

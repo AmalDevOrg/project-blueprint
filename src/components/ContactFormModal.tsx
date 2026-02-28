@@ -156,7 +156,7 @@ const ContactFormModal = ({ open, onClose }: ContactFormModalProps) => {
                     </h3>
                     <p className="text-sm text-muted-foreground mt-2 max-w-xs">
                       We've received your message and will get back to you
-                      within one business day.
+                      within two business day.
                     </p>
                     <button
                       onClick={handleClose}

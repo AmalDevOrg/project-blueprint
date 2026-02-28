@@ -28,8 +28,8 @@ const Projects = () => {
           transition={{ delay: 0.2 }}
           className="text-muted-foreground max-w-lg mx-auto leading-relaxed mb-12"
         >
-          We are currently delivering several high-impact projects that will
-          be showcased here shortly.
+          We are currently delivering several high-impact projects that will be
+          showcased here shortly.
         </motion.p>
 
         <motion.div
@@ -44,7 +44,10 @@ const Projects = () => {
               key={n}
               className="aspect-[4/3] rounded-xl bg-muted/60 border border-border flex items-center justify-center"
             >
-              <span className="text-muted-foreground/40 font-heading text-sm">Project {n}</span>
+              {/* <span className="text-muted-foreground/40 font-heading text-sm">Project {n}</span> */}
+              <span className="text-muted-foreground/40 font-heading text-sm">
+                Coming soon...
+              </span>
             </div>
           ))}
         </motion.div>
