@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Code2, Globe, GraduationCap, Cog, Users } from "lucide-react";
+import { Code2, Globe, GraduationCap, Film, TrendingUp, Layers, Palette } from "lucide-react";
+import { SECTION_ID_SERVICES } from "@/lib/constants";
 
 const services = [
   {
@@ -10,7 +11,7 @@ const services = [
   {
     icon: Globe,
     title: "Website & Platform Engineering",
-    description: "High-performance web platforms built with modern architecture and scalable infrastructure.",
+    description: "From design to production — high-performance web platforms built with modern architecture and scalable infrastructure.",
   },
   {
     icon: GraduationCap,
@@ -18,14 +19,24 @@ const services = [
     description: "End-to-end learning platforms designed for engagement, scale, and measurable outcomes.",
   },
   {
-    icon: Cog,
-    title: "Technical Project Execution",
-    description: "Structured delivery of complex technical initiatives with transparency at every milestone.",
+    icon: Film,
+    title: "3D & 2D Animation",
+    description: "From 2D explainer videos to cinematic 3D animation — crafted for marketing, e-learning, corporate training, and social content.",
   },
   {
-    icon: Users,
-    title: "Dedicated Remote Teams",
-    description: "Vetted engineering talent integrated seamlessly into your workflow and culture.",
+    icon: TrendingUp,
+    title: "Digital Marketing",
+    description: "SEO, social media management, content creation, and paid advertising to grow your brand online.",
+  },
+  {
+    icon: Layers,
+    title: "UI/UX Design & Prototyping",
+    description: "From user flows and wireframes to high-fidelity prototypes — ready for your dev team to build.",
+  },
+  {
+    icon: Palette,
+    title: "Branding & Identity",
+    description: "Logo design, visual identity systems, and brand guidelines built for consistency and impact.",
   },
 ];
 
@@ -40,7 +51,7 @@ const fadeUp = {
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-background">
+    <section id={SECTION_ID_SERVICES} className="section-padding bg-background">
       <div className="container-narrow">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

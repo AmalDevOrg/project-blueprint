@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Search, PenTool, Hammer, Rocket } from "lucide-react";
+import { SECTION_ID_HOW_WE_WORK } from "@/lib/constants";
 
 const steps = [
   { icon: Search, label: "Discover", description: "Deep-dive into your goals, constraints, and vision." },
@@ -10,7 +11,7 @@ const steps = [
 
 const HowWeWork = () => {
   return (
-    <section id="how-we-work" className="section-padding bg-secondary">
+    <section id={SECTION_ID_HOW_WE_WORK} className="section-padding bg-secondary">
       <div className="container-narrow">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

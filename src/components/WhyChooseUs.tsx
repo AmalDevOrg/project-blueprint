@@ -1,12 +1,37 @@
 import { motion } from "framer-motion";
-import { Zap, Globe2, TrendingUp, Clock, Building2 } from "lucide-react";
+import { Zap, Globe2, TrendingUp, Clock, Building2, Cog } from "lucide-react";
 
 const reasons = [
-  { icon: Zap, title: "Execution-Driven", text: "We ship. No endless meetings, no scope creep." },
-  { icon: Globe2, title: "Global Talent", text: "Access world-class engineers across time zones." },
-  { icon: TrendingUp, title: "Scalable Teams", text: "Flex capacity up or down as your project evolves." },
-  { icon: Clock, title: "Fast Turnaround", text: "Structured sprints keep delivery timelines tight." },
-  { icon: Building2, title: "Enterprise Mindset", text: "Security, compliance, and scalability by default." },
+  {
+    icon: Zap,
+    title: "Execution-Driven",
+    text: "We ship. No endless meetings, no scope creep.",
+  },
+  {
+    icon: Globe2,
+    title: "Global Talent, Remote-First",
+    text: "We provide top-tier remote engineers and creatives who seamlessly integrate into your project.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Scalable Teams",
+    text: "Flex capacity up or down as your project evolves.",
+  },
+  {
+    icon: Clock,
+    title: "Fast Turnaround",
+    text: "Structured sprints keep delivery timelines tight.",
+  },
+  {
+    icon: Building2,
+    title: "Enterprise Mindset",
+    text: "Security, compliance, and scalability by default.",
+  },
+  {
+    icon: Cog,
+    title: "Technical Project Execution",
+    text: "Structured delivery of complex initiatives with full transparency at every milestone.",
+  },
 ];
 
 const WhyChooseUs = () => {
@@ -43,8 +68,12 @@ const WhyChooseUs = () => {
             >
               <r.icon className="w-6 h-6 text-accent shrink-0 mt-1" />
               <div>
-                <h3 className="font-heading font-semibold text-foreground mb-1">{r.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{r.text}</p>
+                <h3 className="font-heading font-semibold text-foreground mb-1">
+                  {r.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {r.text}
+                </p>
               </div>
             </motion.div>
           ))}

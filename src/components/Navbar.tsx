@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  SECTION_ID_SERVICES,
+  SECTION_ID_HOW_WE_WORK,
+  SECTION_ID_ABOUT,
+  SECTION_ID_START_A_PROJECT,
+} from "@/lib/constants";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#how-we-work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: `#${SECTION_ID_SERVICES}` },
+  { label: "Process", href: `#${SECTION_ID_HOW_WE_WORK}` },
+  { label: "About", href: `#${SECTION_ID_ABOUT}` },
 ];
 
 const Navbar = () => {
@@ -45,7 +50,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href={`#${SECTION_ID_START_A_PROJECT}`}
             className="bg-accent text-accent-foreground text-sm font-heading font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity"
           >
             Get Started
@@ -86,7 +91,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`#${SECTION_ID_START_A_PROJECT}`}
               onClick={() => setMobileOpen(false)}
               className="inline-block mt-2 bg-accent text-accent-foreground text-sm font-heading font-semibold px-5 py-2.5 rounded-lg"
             >

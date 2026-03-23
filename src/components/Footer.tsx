@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, INSTAGRAM_URL } from "@/lib/contants";
+import { CONTACT_EMAIL, INSTAGRAM_URL } from "@/lib/constants";
 import { Instagram, Mail } from "lucide-react";
 
 const Footer = () => {
