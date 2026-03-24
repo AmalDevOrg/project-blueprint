@@ -59,7 +59,7 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">Connect</h3>
             <ul className="space-y-2 text-sm opacity-70">
-              <li>
+              {/* <li>
                 <a
                   target="_blank"
                   href={INSTAGRAM_URL}
@@ -67,7 +67,7 @@ const Footer = () => {
                 >
                   <Instagram className="w-4 h-4" /> Instagram
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
