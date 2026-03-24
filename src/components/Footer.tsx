@@ -30,30 +30,21 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-bold text-lg mb-4">Services</h3>
             <ul className="space-y-2 text-sm opacity-70">
-              <li>
-                <a
-                  href="#services"
-                  className="hover:opacity-100 transition-opacity"
-                >
-                  Software Development
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:opacity-100 transition-opacity"
-                >
-                  Platform Engineering
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="hover:opacity-100 transition-opacity"
-                >
-                  LMS Solutions
-                </a>
-              </li>
+              {[
+                "Custom Software Development",
+                "Website & Platform Engineering",
+                "LMS & EdTech Solutions",
+                "3D & 2D Animation",
+                "Digital Marketing",
+                "UI/UX Design & Prototyping",
+                "Branding & Identity",
+              ].map((s) => (
+                <li key={s}>
+                  <a href="#services" className="hover:opacity-100 transition-opacity">
+                    {s}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
